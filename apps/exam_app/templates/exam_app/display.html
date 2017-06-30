@@ -1,0 +1,28 @@
+<html>
+    <head>
+        {% load staticfiles %}
+        <link rel='stylesheet' href="{% static 'exam_app/display.css' %}">
+    </head>
+    <body>
+        <div id='header'>
+            <a href='/appointments'>Dashboard</a>&nbsp
+            <a href='/logout'>Logout</a>
+        </div>
+        
+        <form action='/update/{{appointment.id}}' method='post'>
+            {% csrf_token %}
+            Tasks: <input type='text' value='{{appointment.task}}' name='task'><br><br>
+            Status:<select value='{{appointment.status}}' name='status'>
+                        <option>Done</option>
+                        <option>Pending</option>
+                        <option>Missed</option>
+                    </select><br><br>
+            Date:<input type='text' value='{{appointment.date}}' name='date'><br><br>
+            Time:<input type='text' value='{{appointment.time}}' name='time'><br><br>
+            <input type='submit' value='Update'>
+        </form>
+    </body>
+</html>
+
+
+

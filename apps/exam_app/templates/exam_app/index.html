@@ -1,0 +1,36 @@
+<html>
+    <head>
+        {% load staticfiles %}
+        <link rel='stylesheet' href="{% static 'exam_app/style.css' %}">
+    </head>
+    <body>
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+        <div id='registration'>
+            <form action='/process' method='post'>
+                {% csrf_token %}
+                <h2>Registration</h2>
+                First Name:<input type='text' name='first_name'><br><br>
+                Last Name:<input type='text' name='last_name'><br><br>
+                Email:<input type='text' name='email'><br><br>
+                Password:<input type='password' name='password'><br><br>
+                Confirm Password:<input type='password' name='con_password'><br><br>
+                Date of Birth:<input type='date' name='birthday'><br><br>
+                <input type='submit' value='Register' id='register_button'>
+            </form>
+        </div>
+
+        <div id='login'>
+            <form action='/login' method='post'>
+                {% csrf_token %}
+                <h2>Login</h2>
+                Email:<input type='text' name='login_email'><br><br>
+                Password:<input type='password' name='login_password'><br><br>
+                <input type='submit' value='Login' id='login_button'>
+            </form>
+        </div>
+    </body>
+</html>

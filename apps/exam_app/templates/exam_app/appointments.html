@@ -1,0 +1,63 @@
+<html>
+    <head>
+        {% load staticfiles %}
+        <link rel='stylesheet' href="{% static 'exam_app/style.css' %}">
+    </head>
+    <body>
+        <div id='header'>
+            <h1>Hello, {{user.first_name}}</h1>
+            
+            <form action='/logout'>
+                <input type='submit' value='Logout' id='logout'>
+            </form>
+        </div>
+        <h3>Here are your appointments today {{now}}</h3>
+        <table>
+            <tr>
+                <th>Tasks</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+                {% for a in todayapp %}
+          
+            <tr>
+                <td>{{a.task}}</td>
+                <td>{{a.time}}</td>
+                <td>{{a.status}}</td>
+                <td><a href='appointments/{{a.id}}'>{{edit}}</a> <a href='/delete/{{a.id}}'>{{delete}}</a></td>
+            </tr>        
+            {% endfor %}
+        </table>
+
+        <h3>Your Other appointments:</h3>
+        <table>
+            <tr>
+                <th>Tasks</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+           {% for i in user.appointments.all %}
+            <tr>
+                <td>{{i.task}}</td>
+                <td>{{i.date}}</td>
+                <td>{{i.time}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+        <form action='/addappointment' method='post'>
+            {% csrf_token %}
+            <h3>Add Appointment</h3>
+                Date:<input type='date' name='date'><br><br>
+                Time:<input type='time' name='time'><br><br>
+                Tasks:<input type='text' name='task'><br><br>
+                <input type='submit' value='Add'>
+        </form>
+    </body>
+</html>

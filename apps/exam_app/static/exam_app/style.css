@@ -1,0 +1,41 @@
+#registration {
+    border: 2px solid black;
+    padding: 10px;
+    width: 300px;
+    display: inline-block;
+}
+
+#login {
+    display: inline-block;
+    vertical-align: top;
+    border: 2px solid black;
+    padding: 10px;
+    margin-left: 20px;
+}
+
+#register_button {
+    border-radius: 10px;
+    background-color: #1f628d;
+    color: white;
+    border-color: #1f628d;
+    padding: 8px;
+}
+
+#login_button {
+    border-radius: 10px;
+    background-color: #1f628d;
+    color: white;
+    border-color: #1f628d;
+    padding: 8px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+    padding: 10px;
+    height: 50px;
+    width: 80%;
+}
